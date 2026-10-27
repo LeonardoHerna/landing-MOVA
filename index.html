@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Título y descripción que aparecen en Google y al compartir el enlace -->
+  <title>MOVA – Entregas y retiros en Montevideo</title>
+  <meta name="description" content="MOVA: entregas y retiros en moto en Montevideo. Flex de Mercado Libre, pedidos de tu tienda, documentos y encargos. De lunes a sábado, el mismo día.">
+
+  <!-- Tipografías de Google Fonts: Exo 2 (logo) y Poppins (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,800&family=Poppins:wght@400;500;600;700&display=swap">
+
+  <!-- Estilos de la página (colores, tamaños, diseño) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ==========================================================
+       LOGO (ícono)
+       Se define una sola vez y se reutiliza con <use href="#mv">
+       en el encabezado y en el pie. Líneas verdes = velocidad,
+       cubo = paquete. Para cambiar el logo, reemplazá este bloque.
+       ========================================================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mv" viewBox="0 0 104 64">
+      <!-- Líneas de velocidad (verde) -->
+      <g stroke="#6fe02b" stroke-width="4.5" stroke-linecap="round">
+        <path d="M3 20h24" />
+        <path d="M8 32h22" opacity=".85" />
+        <path d="M13 44h17" opacity=".6" />
+      </g>
+      <!-- Cubo / paquete (toma el color del texto) -->
+      <g transform="translate(40 3)" fill="none" stroke="currentColor" stroke-width="4"
+         stroke-linejoin="round" stroke-linecap="round">
+        <path d="M29 3l24 13v27L29 57 5 43V16z" />
+        <path d="M5 16l24 14 24-14M29 30v27" />
+      </g>
+    </symbol>
+  </svg>
+
+
+  <!-- ==========================================================
+       ENCABEZADO
+       Barra fija arriba: logo a la izquierda, botón a la derecha.
+       ========================================================== -->
+  <header>
+    <div class="wrap">
+      <a class="logo" href="#inicio" aria-label="MOVA – inicio">
+        <svg><use href="#mv" /></svg>
+        <span class="wm">MOVA</span>
+      </a>
+      <a class="btn btn-g" href="#cotizar">WhatsApp</a>
+    </div>
+  </header>
+
+
+  <main id="inicio">
+
+    <!-- ========================================================
+         PORTADA (HERO)
+         Título principal, botones, ventajas y foto.
+         ======================================================== -->
+    <div class="hero">
+      <div class="wrap">
+
+        <!-- Columna de texto -->
+        <div>
+          <span class="tag">Entregas y retiros en moto · Montevideo</span>
+          <h1>Tu pedido, <em>en movimiento.</em></h1>
+          <p class="lead">
+            Entregas y retiros para emprendedores y comercios: Flex de Mercado Libre,
+            pedidos de tu tienda, documentos y encargos. De lunes a sábado, el mismo día.
+          </p>
+
+          <!-- Botones principales -->
+          <div class="cta">
+            <a class="btn btn-g" href="#cotizar">Cotizar mi envío</a>
+            <a class="btn btn-o" href="#tarifas">Ver tarifas</a>
+          </div>
+
+          <!-- Ventajas rápidas (la tilde ✓ se agrega desde el CSS) -->
+          <div class="chips">
+            <span>Mismo día</span>
+            <span>Lunes a sábado</span>
+            <span>Aviso por WhatsApp</span>
+            <span>Sin mínimo</span>
+          </div>
+        </div>
+
+        <!-- Foto principal: reemplazá hero.jpg por otra imagen con el mismo nombre -->
+        <img src="hero.jpg" width="900" height="900"
+             alt="Repartidor de MOVA en moto frente a la rambla de Montevideo">
+
+      </div>
+    </div>
+
+
+    <!-- ========================================================
+         SERVICIOS
+         Cuatro tarjetas. Para agregar una, copiá un bloque
+         <div class="card"> completo y cambiá el texto.
+         ======================================================== -->
+    <section class="alt" id="servicios">
+      <div class="wrap">
+        <h2>Qué hacemos</h2>
+        <p class="sub">Retiramos donde estés y entregamos en el día.</p>
+
+        <div class="grid g4">
+          <div class="card">
+            <div class="ic">📦</div>
+            <h3>Envíos Flex</h3>
+            <p>Entregas de Mercado Libre con escaneo de QR en la app.</p>
+          </div>
+
+          <div class="card">
+            <div class="ic">🛍️</div>
+            <h3>Pedidos de tiendas</h3>
+            <p>Llevamos las ventas de tu emprendimiento a tus clientes.</p>
+          </div>
+
+          <div class="card">
+            <div class="ic">📄</div>
+            <h3>Documentos</h3>
+            <p>Retiro y entrega de papeles y sobres, con aviso de recepción.</p>
+          </div>
+
+          <div class="card">
+            <div class="ic">🧾</div>
+            <h3>Encargos</h3>
+            <p>Retiramos y llevamos lo que necesites dentro de Montevideo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         CÓMO FUNCIONA
+         Tres pasos numerados.
+         ======================================================== -->
+    <section id="como">
+      <div class="wrap">
+        <h2>Cómo funciona</h2>
+        <p class="sub">Simple, sin vueltas.</p>
+
+        <div class="grid g3">
+          <div class="card">
+            <div class="num">1</div>
+            <h3>Escribinos</h3>
+            <p>Contanos qué necesitás y en qué zona. Te respondemos por WhatsApp.</p>
+          </div>
+
+          <div class="card">
+            <div class="num">2</div>
+            <h3>Retiramos</h3>
+            <p>Pasamos por tu local o domicilio en horarios fijos o a coordinar.</p>
+          </div>
+
+          <div class="card">
+            <div class="num">3</div>
+            <h3>Entregamos y avisamos</h3>
+            <p>Te confirmamos cada entrega, o cualquier problema, por WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         TARIFAS
+         Cada tarjeta es un botón: al tocarla elige la zona en el
+         formulario (ver script.js, atributo data-z).
+         IMPORTANTE: si cambiás un precio acá, cambialo también
+         en script.js (variable T) y en las opciones del formulario.
+         ======================================================== -->
+    <section class="alt" id="tarifas">
+      <div class="wrap">
+        <h2>Tarifas por paquete o encargo</h2>
+        <p class="sub">Sin mínimo de paquetes. Tocá una zona para cotizar.</p>
+
+        <div class="grid g3">
+          <button class="card" data-z="cercana">
+            <h3>Zona cercana</h3>
+            <div class="price">$130 <small>por paquete</small></div>
+            <p>Barrios próximos a tu retiro.</p>
+          </button>
+
+          <button class="card" data-z="intermedia">
+            <h3>Zona intermedia</h3>
+            <div class="price">$160 <small>por paquete</small></div>
+            <p>Barrios alejados del centro.</p>
+          </button>
+
+          <button class="card" data-z="afueras">
+            <h3>Afueras de Montevideo</h3>
+            <div class="price">$230 <small>por paquete</small></div>
+            <p>Zonas periféricas del departamento.</p>
+          </button>
+        </div>
+
+        <!-- Promoción de primera entrega -->
+        <div class="promo">🎁 Primera entrega de prueba con $20 de descuento por paquete.</div>
+
+        <!-- Aclaraciones de horarios y servicios especiales -->
+        <p class="note">
+          Retiros fijos a las 10:30 y 14:00; otros horarios a coordinar. Los encargos con
+          espera o trámites y los paquetes grandes se cotizan aparte. Consultanos por tu
+          barrio para confirmar la zona.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         COTIZADOR
+         Formulario que calcula el total y arma el mensaje de
+         WhatsApp. La lógica está en script.js; los id (nom, tipo,
+         z, n, tot, send) no se deben cambiar sin ajustar el script.
+         ======================================================== -->
+    <section id="cotizar">
+      <div class="wrap">
+        <h2>Pedí tu cotización</h2>
+        <p class="sub">Completá los datos y se arma el mensaje listo para enviarnos por WhatsApp.</p>
+
+        <div class="form">
+
+          <label>
+            Tu nombre (opcional)
+            <input id="nom" type="text" autocomplete="name" placeholder="Ej: Laura">
+          </label>
+
+          <label>
+            Qué necesitás
+            <select id="tipo">
+              <option>Envíos Flex</option>
+              <option>Pedidos de mi tienda</option>
+              <option>Documentos</option>
+              <option>Encargo o retiro</option>
+              <option>Otro</option>
+            </select>
+          </label>
+
+          <label>
+            Zona de entrega
+            <select id="z">
+              <option value="cercana">Cercana – $130</option>
+              <option value="intermedia">Intermedia – $160</option>
+              <option value="afueras">Afueras – $230</option>
+            </select>
+          </label>
+
+          <label>
+            Paquetes o encargos
+            <input id="n" type="number" min="1" max="200" value="5" inputmode="numeric">
+          </label>
+
+          <!-- Total calculado automáticamente -->
+          <div class="total">
+            <span>Total estimado</span>
+            <b id="tot">$650</b>
+          </div>
+
+          <!-- El enlace a WhatsApp se completa desde script.js -->
+          <a class="btn btn-g" id="send" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+
+          <p class="note" style="margin:0">
+            El valor es una estimación: confirmamos el precio final al coordinar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==========================================================
+       PIE DE PÁGINA
+       Logo y datos. El año se actualiza solo desde script.js.
+       ========================================================== -->
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="#inicio" aria-label="MOVA – inicio">
+        <svg><use href="#mv" /></svg>
+        <span class="wm" style="font-size:22px">MOVA</span>
+      </a>
+      <span>Tu pedido, en movimiento · Montevideo, Uruguay · © <span id="yr">2026</span></span>
+    </div>
+  </footer>
+
+
+  <!-- Botón flotante "Cotizar": solo se ve en celular -->
+  <a class="btn btn-g wa-float" href="#cotizar">Cotizar</a>
+
+
+  <!-- Lógica de la página (calculadora y WhatsApp) -->
+  <script src="script.js"></script>
+
+</body>
+</html>

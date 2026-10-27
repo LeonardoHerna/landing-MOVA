@@ -1,0 +1,515 @@
+/* ==========================================================
+   MOVA – HOJA DE ESTILOS
+   Índice:
+   1. Colores (paleta) y modo claro / oscuro
+   2. Base y reinicio
+   3. Encabezado y logo
+   4. Botones
+   5. Portada (hero)
+   6. Secciones, títulos y tarjetas
+   7. Tarifas
+   8. Formulario / cotizador
+   9. Pie de página y botón flotante
+   10. Adaptación a pantallas (responsive)
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   1. COLORES (PALETA)
+   Para cambiar la paleta, editá solo estas variables.
+   --green  : verde del logo (botones, detalles)
+   --bg     : fondo de la página
+   --surface: fondo de tarjetas y secciones alternas
+   --text   : color del texto principal
+   --muted  : texto secundario (gris)
+   --line   : bordes y líneas
+   ---------------------------------------------------------- */
+
+/* Modo claro (por defecto) */
+:root {
+  --bg: #f5f7f3;
+  --surface: #ffffff;
+  --text: #0f1110;
+  --muted: #53595a;
+  --line: #dfe4dc;
+  --green: #6fe02b;
+  --green-ink: #2c8a00;          /* verde más oscuro para texto sobre fondo claro */
+  --on-green: #0a0c09;           /* color del texto dentro de los botones verdes */
+  --hdr: rgba(245, 247, 243, .92);
+  --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+
+  /* Respeta las zonas seguras de celulares con notch */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Modo oscuro automático (si el celular o la PC lo tienen activado) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0c0b;
+    --surface: #151715;
+    --text: #f4f6f3;
+    --muted: #a3aaa1;
+    --line: #252a24;
+    --green-ink: #6fe02b;
+    --hdr: rgba(11, 12, 11, .92);
+    --shadow: 0 10px 30px rgba(0, 0, 0, .5);
+  }
+}
+
+/* Modo oscuro forzado (si agregás data-theme="dark" al <html>) */
+:root[data-theme="dark"] {
+  --bg: #0b0c0b;
+  --surface: #151715;
+  --text: #f4f6f3;
+  --muted: #a3aaa1;
+  --line: #252a24;
+  --green-ink: #6fe02b;
+  --hdr: rgba(11, 12, 11, .92);
+  --shadow: 0 10px 30px rgba(0, 0, 0, .5);
+}
+
+
+/* ----------------------------------------------------------
+   2. BASE Y REINICIO
+   ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;   /* desplazamiento suave al tocar los enlaces */
+  scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 76px); /* deja lugar al encabezado fijo */
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Franja que tapa la zona del notch en celulares */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--hdr);
+  z-index: 30;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+/* Contenedor central: ancho máximo 1080px con margen a los lados */
+.wrap {
+  width: min(1080px, 100% - 40px);
+  margin-inline: auto;
+}
+
+
+/* ----------------------------------------------------------
+   3. ENCABEZADO Y LOGO
+   ---------------------------------------------------------- */
+header {
+  position: sticky;                              /* queda fijo al hacer scroll */
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--hdr);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo svg {
+  width: 52px;
+  height: 32px;
+}
+
+/* Texto "MOVA" del logo: itálica pesada */
+.wm {
+  font-family: "Exo 2", "Arial Black", Impact, sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: .03em;
+  line-height: 1;
+}
+
+
+/* ----------------------------------------------------------
+   4. BOTONES
+   .btn   = forma base
+   .btn-g = botón verde (principal)
+   .btn-o = botón con borde (secundario)
+   ---------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 24px;
+  font: 600 15px/1 Poppins, system-ui, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.btn-g {
+  background: var(--green);
+  color: var(--on-green);
+  box-shadow: 0 6px 20px rgba(111, 224, 43, .35);
+}
+
+.btn-g:hover {
+  transform: translateY(-2px);   /* se levanta al pasar el mouse */
+}
+
+.btn-o {
+  border: 1.5px solid var(--line);
+  background: transparent;
+  color: var(--text);
+}
+
+.btn-o:hover {
+  border-color: var(--green);
+}
+
+
+/* ----------------------------------------------------------
+   5. PORTADA (HERO)
+   ---------------------------------------------------------- */
+.hero {
+  padding: 44px 0 56px;
+}
+
+.hero .wrap {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Etiqueta pequeña sobre el título */
+.tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-ink);
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: clamp(34px, 6vw, 56px);   /* se adapta al tamaño de pantalla */
+  line-height: 1.08;
+  margin: 0 0 16px;
+  letter-spacing: -.02em;
+}
+
+h1 em {
+  font-style: normal;
+  color: var(--green-ink);             /* palabra resaltada en verde */
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 520px;
+  margin: 0 0 26px;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Ventajas rápidas debajo de los botones */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.chips span::before {
+  content: "✓ ";
+  color: var(--green-ink);
+  font-weight: 700;
+}
+
+.hero img {
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+
+/* ----------------------------------------------------------
+   6. SECCIONES, TÍTULOS Y TARJETAS
+   ---------------------------------------------------------- */
+section {
+  padding: 56px 0;
+}
+
+/* Secciones con fondo distinto (Servicios y Tarifas) */
+.alt {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+h2 {
+  font-size: clamp(26px, 4vw, 36px);
+  margin: 0 0 8px;
+  letter-spacing: -.01em;
+}
+
+.sub {
+  color: var(--muted);
+  margin: 0 0 30px;
+}
+
+/* Cuadrícula base; g3 y g4 definen las columnas (ver sección 10) */
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.alt .card {
+  background: var(--bg);
+}
+
+.card .ic {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Círculo verde numerado (pasos de "Cómo funciona") */
+.num {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--on-green);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+
+/* ----------------------------------------------------------
+   7. TARIFAS
+   ---------------------------------------------------------- */
+/* Las tarjetas de tarifa son <button>, por eso se reinicia su estilo */
+button.card {
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color .15s, transform .15s;
+}
+
+button.card:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+}
+
+.price {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--green-ink);
+  line-height: 1.1;
+  margin: 6px 0;
+}
+
+.price small {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Cuadro de la promoción (borde punteado verde) */
+.promo {
+  margin-top: 18px;
+  border: 1.5px dashed var(--green);
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-weight: 500;
+}
+
+/* Texto chico de aclaraciones */
+.note {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 14px;
+}
+
+
+/* ----------------------------------------------------------
+   8. FORMULARIO / COTIZADOR
+   ---------------------------------------------------------- */
+.form {
+  display: grid;
+  gap: 14px;
+  max-width: 560px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  display: grid;
+  gap: 6px;
+}
+
+input,
+select {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--green);   /* borde verde al escribir */
+  outline-offset: 1px;
+}
+
+/* Caja del total estimado */
+.total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 14px 18px;
+}
+
+.total b {
+  font-size: 30px;
+  color: var(--green-ink);
+}
+
+
+/* ----------------------------------------------------------
+   9. PIE DE PÁGINA Y BOTÓN FLOTANTE
+   ---------------------------------------------------------- */
+footer {
+  padding: 36px 0 44px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Botón "Cotizar" flotante (solo celular, se oculta en la sección 10) */
+.wa-float {
+  position: fixed;
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 25;
+}
+
+
+/* ----------------------------------------------------------
+   10. ADAPTACIÓN A PANTALLAS (RESPONSIVE)
+   Por defecto todo va en una columna (celular).
+   ---------------------------------------------------------- */
+
+/* Tablet y computadora (760px o más) */
+@media (min-width: 760px) {
+  .hero .wrap {
+    grid-template-columns: 1.1fr .9fr;   /* texto a la izquierda, foto a la derecha */
+  }
+
+  .g3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .g4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .wa-float {
+    display: none;                        /* en pantallas grandes no hace falta */
+  }
+}
+
+/* Celulares grandes: servicios en 2 columnas */
+@media (min-width: 520px) and (max-width: 759px) {
+  .g4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Respeta a quienes desactivan las animaciones en su dispositivo */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
